@@ -46,11 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color(0xFF73020C),
-        centerTitle: true,
-        title: Text(widget.title),
-      ),
+      backgroundColor: Color(0xFF35373A),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

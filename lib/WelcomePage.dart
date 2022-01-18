@@ -38,7 +38,7 @@ class _WelcomeState extends State<Welcome> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color(0xFF35373A),
+      color: Color(0xFF323233),
       child: Stack(
         alignment: AlignmentDirectional.bottomCenter,
         children: <Widget>[
@@ -80,7 +80,7 @@ class _WelcomeState extends State<Welcome> {
                 child: Text(
                   'Continue',
                   style: TextStyle(
-                    fontSize: 22,
+                    fontSize: 25,
                   ),
                 ),
                 style: ElevatedButton.styleFrom(

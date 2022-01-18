@@ -19,18 +19,18 @@ class CircleProgress extends CustomPainter {
     isTemp ? 50 : 100; // Temp's max is 50, Humidity's max is 100
 
     Paint outerCircle = Paint()
-      ..strokeWidth = 14
+      ..strokeWidth = 10
       ..color = Colors.deepPurple
       ..style = PaintingStyle.stroke;
 
     Paint tempArc = Paint()
-      ..strokeWidth = 14
+      ..strokeWidth = 10
       ..color = Color(0xFFB2BCCC)
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.round;
 
     Paint humidityArc = Paint()
-      ..strokeWidth = 14
+      ..strokeWidth = 10
       ..color = Color(0xFFB2BCCC)
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.round;

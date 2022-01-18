@@ -11,9 +11,11 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_vlc_player: ^0.0.2
-  firebase_database: ^9.0.5
+  firebase_database: ^7.0.0
   firebase_core: ^1.11.0
   firebase_auth: ^3.3.5
+  community_material_icon: ^5.8.55
+  syncfusion_flutter_gauges: ^19.4.42
 
 
   
@@ -32,6 +34,9 @@ flutter:
     - family: Constantia
       fonts:
         - asset: assets/fonts/Constantia.ttf
+    - family: CameraIcon
+      fonts:
+        - asset: assets/fonts/CameraIcon.ttf
 
   uses-material-design: true
 
