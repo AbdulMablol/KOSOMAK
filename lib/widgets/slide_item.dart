@@ -14,7 +14,7 @@ class SlideItem extends StatelessWidget {
           width: 220,
           height:70,
           decoration: ShapeDecoration(
-              color: Colors.deepPurple,
+              color: Color(0xff5317BD),
               shape:
               RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(80)
@@ -36,9 +36,9 @@ class SlideItem extends StatelessWidget {
           children:<Widget>[
             Container(
               alignment: AlignmentDirectional.center,
-              margin: EdgeInsets.only(top: 120),
+              margin: EdgeInsets.only(top: 90),
               width: 300,
-              height: 200,
+              height: 300,
               decoration: BoxDecoration(
                 shape: BoxShape.rectangle,
                 image: DecorationImage(

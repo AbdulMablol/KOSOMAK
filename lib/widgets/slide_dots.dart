@@ -13,7 +13,7 @@ class SlideDots extends StatelessWidget {
       height: isActive ? 12 : 8,
       width: isActive ? 12 : 8,
       decoration: BoxDecoration(
-        color: Colors.deepPurple,
+        color: Color(0xff5317BD),
         borderRadius: BorderRadius.all(Radius.circular(5)),
       ),
     );

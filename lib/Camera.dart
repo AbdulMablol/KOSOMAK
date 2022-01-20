@@ -46,7 +46,17 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF35373A),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: Color(0xff5317BD),
+        centerTitle: false,
+        title: const Text('Livestream',
+          style: TextStyle(
+            fontSize: 25,
+          ),
+        ),
+      ),
+      backgroundColor: Color(0xFF191919),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -59,10 +69,10 @@ class _MyHomePageState extends State<MyHomePage> {
                           TextSpan(
                             text: 'Stream Closed',
                             style: TextStyle(
-                                fontSize: 14.0,
+                                fontSize: 17,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white,
-                                background: Paint()..color = Colors.red),
+                                background: Paint()..color = Color(0xff5317BD)),
                           )
                         ]),
                       ),
@@ -78,16 +88,16 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => Home()),
-          );
-        },
-        child: const Icon(Icons.arrow_back),
-        backgroundColor: Colors.black,
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     Navigator.push(
+      //       context,
+      //       MaterialPageRoute(builder: (context) => Home()),
+      //     );
+      //   },
+      //   child: const Icon(Icons.arrow_back),
+      //   backgroundColor: Colors.black,
+      // ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

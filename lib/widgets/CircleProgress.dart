@@ -20,7 +20,7 @@ class CircleProgress extends CustomPainter {
 
     Paint outerCircle = Paint()
       ..strokeWidth = 10
-      ..color = Colors.deepPurple
+      ..color = Colors.black
       ..style = PaintingStyle.stroke;
 
     Paint tempArc = Paint()

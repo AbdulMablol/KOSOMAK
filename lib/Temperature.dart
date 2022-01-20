@@ -21,11 +21,10 @@ class _DashboardState extends State<Temp>
   Animation<double> tempAnimation;
   Animation<double> humidityAnimation;
   Animation<double> weightAnimation;
-
+  Animation<double> cryAnimation;
   @override
   void initState() {
     super.initState();
-
     databaseReference
         .child('DHT22')
         .once()
@@ -33,13 +32,12 @@ class _DashboardState extends State<Temp>
       double temp = snapshot.value['1-set']['Temp'];
       double humidity = snapshot.value['1-set']['Humidity'];
       double weight = snapshot.value['1-set']['Weight'];
-
+      double cry = snapshot.value['1-set']['Cry'];
       isLoading = true;
-      _dashboardInit(temp, humidity, weight);
+      _dashboardInit(temp, humidity, weight, cry);
     });
   }
-
-  _dashboardInit(double temp, double humid, double weight) {
+  _dashboardInit(double temp, double humid, double weight, double cry) {
     progressController = AnimationController(
         vsync: this, duration: Duration(milliseconds: 2000)); //2s
 
@@ -61,13 +59,29 @@ class _DashboardState extends State<Temp>
         setState(() {});
       });
 
+    // cryAnimation =
+    // Tween<double>(begin: 0, end: cry).animate(progressController)
+    //   ..addListener(() {
+    //     setState(() {});
+    //   });
+
+
     progressController.forward();
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF35373A),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: Color(0xff5317BD),
+        centerTitle: false,
+        title: const Text('Dashboard',
+          style: TextStyle(
+            fontSize: 25,
+          ),
+        ),
+      ),
+      backgroundColor: Color(0xFF191919),
       body: Center(
           child: isLoading
               ? Column(
@@ -156,19 +170,22 @@ class _DashboardState extends State<Temp>
                       ),
                          SfLinearGauge(
                           minimum: -2500,
-                          maximum: 500,
+                          maximum: 1000,
+                           showLabels: false,
+                           axisTrackStyle: LinearAxisTrackStyle(thickness: 40,
+                           color: Colors.black),
                           animateAxis: true,
+                           animationDuration: 2000,
                           axisLabelStyle: TextStyle(
                             color: Color(0xFFB2BCCC),
                           ),
                           barPointers:
                           [LinearBarPointer(
                               value: weightAnimation.value,
-                          color: Colors.deepPurple,
-                            thickness: 10,
+                          color: Color(0xFFB2BCCC),
+                            thickness: 40,
                           ),
                           ],
-                          animationDuration: 2000,
                         ),
                     ],
                   ),
@@ -181,16 +198,17 @@ class _DashboardState extends State<Temp>
             AlwaysStoppedAnimation(Colors.deepPurple),
           ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => Home()),
-          );
-        },
-        child: const Icon(Icons.arrow_back),
-        backgroundColor: Colors.black,
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     Navigator.push(
+      //       context,
+      //       MaterialPageRoute(builder: (context) => Home()),
+      //     );
+      //   },
+      //   child: const Icon(Icons.arrow_back),
+      //   backgroundColor: Colors.black,
+      // ),
+
     );
   }
 }

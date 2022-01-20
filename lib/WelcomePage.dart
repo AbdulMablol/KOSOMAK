@@ -38,7 +38,7 @@ class _WelcomeState extends State<Welcome> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color(0xFF323233),
+      color: Color(0xff191919),
       child: Stack(
         alignment: AlignmentDirectional.bottomCenter,
         children: <Widget>[
@@ -73,18 +73,18 @@ class _WelcomeState extends State<Welcome> {
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.only(bottom: 50, left: 25, right: 25),
+            padding: const EdgeInsets.only(bottom: 50, left: 35, right: 35),
             child: SizedBox(
               height: 60,
               child: ElevatedButton(
                 child: Text(
                   'Continue',
                   style: TextStyle(
-                    fontSize: 25,
+                    fontSize: 30,
                   ),
                 ),
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.deepPurple,
+                  primary: Color(0xff5317BD),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(40),
                   ),
