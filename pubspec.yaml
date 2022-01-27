@@ -16,6 +16,8 @@ dependencies:
   firebase_auth: ^3.3.5
   community_material_icon: ^5.8.55
   syncfusion_flutter_gauges: ^19.4.42
+  flutter_local_notifications: ^9.2.0
+  animated_text_kit: ^4.2.1
 
 
   

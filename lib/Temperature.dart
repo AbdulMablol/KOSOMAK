@@ -2,7 +2,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
 import 'package:raspberry_pi_stream_camera_to_flutter_live_example/widgets/CircleProgress.dart';
-import 'Homepage.dart';
+// import 'Homepage.dart';
 
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
@@ -42,29 +42,28 @@ class _DashboardState extends State<Temp>
         vsync: this, duration: Duration(milliseconds: 2000)); //2s
 
     tempAnimation =
-    Tween<double>(begin: -50, end: temp).animate(progressController)
+    Tween<double>(begin: -20, end: temp).animate(progressController)
       ..addListener(() {
         setState(() {});
       });
 
     humidityAnimation =
-    Tween<double>(begin: 0, end: humid).animate(progressController)
+    Tween<double>(begin: -20, end: humid).animate(progressController)
       ..addListener(() {
         setState(() {});
       });
 
     weightAnimation =
-    Tween<double>(begin: -2500, end: weight).animate(progressController)
+    Tween<double>(begin: -3000, end: weight).animate(progressController)
       ..addListener(() {
         setState(() {});
       });
 
-    // cryAnimation =
-    // Tween<double>(begin: 0, end: cry).animate(progressController)
-    //   ..addListener(() {
-    //     setState(() {});
-    //   });
-
+    cryAnimation =
+    Tween<double>(begin: 0, end: cry).animate(progressController)
+      ..addListener(() {
+        setState(() {});
+      });
 
     progressController.forward();
   }
@@ -87,6 +86,8 @@ class _DashboardState extends State<Temp>
               ? Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
+              Row(
+          children: <Widget>[
               CustomPaint(
                 foregroundPainter:
                 CircleProgress(tempAnimation.value, true),
@@ -149,11 +150,13 @@ class _DashboardState extends State<Temp>
                   ),
                 ),
               ),
+      ],
+    ),
 
 
               Container(
                 width: 400,
-                height: 200,
+                height: 130,
                 child: Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -169,11 +172,12 @@ class _DashboardState extends State<Temp>
                       ),
                       ),
                          SfLinearGauge(
-                          minimum: -2500,
-                          maximum: 1000,
+                          minimum: -3000,
+                          maximum: 1500,
                            showLabels: false,
                            axisTrackStyle: LinearAxisTrackStyle(thickness: 40,
-                           color: Colors.black),
+                           color: Colors.black,
+                           edgeStyle: LinearEdgeStyle.bothCurve),
                           animateAxis: true,
                            animationDuration: 2000,
                           axisLabelStyle: TextStyle(
@@ -182,11 +186,85 @@ class _DashboardState extends State<Temp>
                           barPointers:
                           [LinearBarPointer(
                               value: weightAnimation.value,
-                          color: Color(0xFFB2BCCC),
+                          color: Color(0xff5317BD),
                             thickness: 40,
+                            edgeStyle: LinearEdgeStyle.bothCurve,
                           ),
                           ],
                         ),
+                    ],
+                  ),
+                ),
+              ),
+              Container(
+                width: 400,
+                height: 130,
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      SizedBox(
+                        height: 40,
+                        child: Text(
+                          'Crying: ${cryAnimation.value.toInt()}',
+                          style: TextStyle(color:Color(0xFFB2BCCC),
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      SfLinearGauge(
+                        // ranges: <LinearGaugeRange>[
+                        //   LinearGaugeRange(
+                        //       edgeStyle: LinearEdgeStyle.startCurve,
+                        //       startValue: 1,
+                        //       endValue: 33,
+                        //       startWidth: 25,
+                        //       endWidth: 25,
+                        //       position: LinearElementPosition.outside,
+                        //     color: Colors.blue,
+                        //   ),
+                        //   LinearGaugeRange(
+                        //       startValue: 33,
+                        //       endValue: 66,
+                        //       startWidth: 25,
+                        //       endWidth: 25,
+                        //       position: LinearElementPosition.outside,
+                        //       color: Color(0xffC93EC1)),
+                        //   LinearGaugeRange(
+                        //       edgeStyle: LinearEdgeStyle.endCurve,
+                        //       startValue: 66,
+                        //       endValue: 99,
+                        //       startWidth: 25,
+                        //       endWidth: 25,
+                        //       position: LinearElementPosition.outside,
+                        //       color: Colors.red),
+                        // ],
+
+                        minimum: 0,
+                        maximum: 100,
+                        showLabels: false,
+                        axisTrackStyle: LinearAxisTrackStyle(thickness: 40,
+                            color: Colors.black,
+                            edgeStyle: LinearEdgeStyle.bothCurve),
+                        animateAxis: true,
+                        animationDuration: 2000,
+                        axisLabelStyle: TextStyle(
+                          color: Color(0xFFB2BCCC),
+                        ),
+                        barPointers: [LinearBarPointer(
+                          shaderCallback: (bounds) => LinearGradient(
+                              begin: Alignment.centerLeft,
+                              end: Alignment.centerRight,
+                              colors: [Colors.deepPurple, Colors.redAccent])
+                              .createShader(bounds),
+                          value: cryAnimation.value,
+                          // color: Color(0xff5317BD),
+                          thickness: 40,
+                          edgeStyle: LinearEdgeStyle.bothCurve,
+                        ),
+                        ],
+                      ),
                     ],
                   ),
                 ),
@@ -195,7 +273,7 @@ class _DashboardState extends State<Temp>
           )
               : CircularProgressIndicator(
             valueColor:
-            AlwaysStoppedAnimation(Colors.deepPurple),
+            AlwaysStoppedAnimation(Color(0xff5317BD)),
           ),
       ),
       // floatingActionButton: FloatingActionButton(

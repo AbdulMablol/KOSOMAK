@@ -1,12 +1,13 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 // ignore: unused_import
 import 'package:raspberry_pi_stream_camera_to_flutter_live_example/Homepage.dart';
-import 'package:raspberry_pi_stream_camera_to_flutter_live_example/WelcomePage.dart';
 import 'Camera.dart';
 import 'Temperature.dart';
-
 import 'package:community_material_icon/community_material_icon.dart';
+// ignore: unused_import
+import 'package:raspberry_pi_stream_camera_to_flutter_live_example/WelcomePage.dart';
 
 
 class Home extends StatefulWidget {
@@ -32,20 +33,38 @@ class _HomeState extends State<Home> {
             ),
         ),
         body: Container(
-          margin: EdgeInsets.only(bottom: 75),
+          margin: EdgeInsets.only(bottom: 50),
           padding: EdgeInsets.symmetric(horizontal: 35),
           child: Stack(
           children: <Widget>[
             Center(
           child: Padding(
-            padding: const EdgeInsets.only(top: 160),
+            padding: const EdgeInsets.only(top: 140),
             child: Column(
                 children: <Widget>[
                 Image.asset(('assets/images/baby-last.png'),
               ),
+            // Text('Status: Baby looks HEALTHY',
+            // style: TextStyle(fontSize: 25,
+            // color: Colors.white),
+            // ),
+                  SizedBox(
+                    width: 500,
+                    height: 70,
+                    child: AnimatedTextKit(
+                      animatedTexts: [
+                        TypewriterAnimatedText('Status: baby looks HEALTHY',
+                            textStyle: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Colors.white,),
+                          textAlign: TextAlign.center,
+                          speed: Duration(milliseconds: 50),
+                        ),
+                      ],
+                      totalRepeatCount: 1,
+                    ),
+                  ),
 
             Padding(
-              padding: const EdgeInsets.only(top: 122),
+              padding: const EdgeInsets.only(top: 98),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [

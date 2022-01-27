@@ -25,13 +25,13 @@ class CircleProgress extends CustomPainter {
 
     Paint tempArc = Paint()
       ..strokeWidth = 10
-      ..color = Color(0xFFB2BCCC)
+      ..color = Color(0xff5317BD)
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.round;
 
     Paint humidityArc = Paint()
       ..strokeWidth = 10
-      ..color = Color(0xFFB2BCCC)
+      ..color = Color(0xff5317BD)
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.round;
 

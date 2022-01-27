@@ -58,5 +58,6 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:29.0.3')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.google.firebase:firebase-core:20.0.2'
+    implementation 'com.google.firebase:firebase-analytics'
 }
 apply plugin: 'com.google.gms.google-services'

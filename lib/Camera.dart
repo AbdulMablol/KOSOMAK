@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_vlc_player/vlc_player.dart';
 import 'package:flutter_vlc_player/vlc_player_controller.dart';
-import 'package:raspberry_pi_stream_camera_to_flutter_live_example/Homepage.dart';
-import 'Homepage.dart';
+//import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:raspberry_pi_stream_camera_to_flutter_live_example/Homepage.dart';
+// import 'Homepage.dart';
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -59,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
       backgroundColor: Color(0xFF191919),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             _streamUrl == null
                 ? Container(
@@ -84,7 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     url: _streamUrl,
                     controller: _vlcViewController,
                     placeholder: Container(),
-                  )
+                  ),
           ],
         ),
       ),
