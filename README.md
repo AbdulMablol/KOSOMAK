@@ -14,3 +14,4 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+![League avatar](https://user-images.githubusercontent.com/97244341/151579904-2970cf43-4a6c-434e-9aa3-efceabb915e1.png)
