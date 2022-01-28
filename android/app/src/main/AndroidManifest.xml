@@ -2,7 +2,7 @@
     package="com.example.raspberry_pi_stream_camera_to_flutter_live_example">
    <application
         android:label="IVS"
-        android:icon="@mipmap/app_icon">
+        android:icon="@mipmap/ic_launcher_foreground">
         <activity
             android:exported="true"
             android:name=".MainActivity"

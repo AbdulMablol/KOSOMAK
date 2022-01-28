@@ -28,7 +28,7 @@ class SlideItem extends StatelessWidget {
             textAlign:TextAlign.center,
           ),
         ),
-        Text(slideList[index].title, style: TextStyle(fontSize:18,
+        Text(slideList[index].title, style: TextStyle(fontSize:21,
             decoration: TextDecoration.none, fontFamily: 'Constantia', color:Color(0xFFB2BCCC)
         ),
         ),
@@ -36,13 +36,14 @@ class SlideItem extends StatelessWidget {
           children:<Widget>[
             Container(
               alignment: AlignmentDirectional.center,
-              margin: EdgeInsets.only(top: 90),
-              width: 300,
+              margin: EdgeInsets.only(top: 80),
+              width: 350,
               height: 300,
               decoration: BoxDecoration(
                 shape: BoxShape.rectangle,
                 image: DecorationImage(
-                    image: AssetImage(slideList[index].imageUrl)
+                    image: AssetImage(slideList[index].imageUrl),
+                  fit: BoxFit.cover
                 ),
               ),
             ),

@@ -8,6 +8,7 @@ import 'Temperature.dart';
 import 'package:community_material_icon/community_material_icon.dart';
 // ignore: unused_import
 import 'package:raspberry_pi_stream_camera_to_flutter_live_example/WelcomePage.dart';
+import 'dashboard_icons.dart';
 
 
 class Home extends StatefulWidget {
@@ -39,21 +40,19 @@ class _HomeState extends State<Home> {
           children: <Widget>[
             Center(
           child: Padding(
-            padding: const EdgeInsets.only(top: 140),
+            padding: const EdgeInsets.only(top: 185),
             child: Column(
                 children: <Widget>[
-                Image.asset(('assets/images/baby-last.png'),
-              ),
-            // Text('Status: Baby looks HEALTHY',
-            // style: TextStyle(fontSize: 25,
-            // color: Colors.white),
-            // ),
+                  Image.asset('assets/images/baby-last.png',
+                    height: 280,
+                  ),
+
                   SizedBox(
                     width: 500,
                     height: 70,
                     child: AnimatedTextKit(
                       animatedTexts: [
-                        TypewriterAnimatedText('Status: baby looks HEALTHY',
+                        TypewriterAnimatedText('Status: baby looks healthy',
                             textStyle: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Colors.white,),
                           textAlign: TextAlign.center,
                           speed: Duration(milliseconds: 50),
@@ -64,7 +63,7 @@ class _HomeState extends State<Home> {
                   ),
 
             Padding(
-              padding: const EdgeInsets.only(top: 98),
+              padding: const EdgeInsets.only(top: 105),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -79,7 +78,8 @@ class _HomeState extends State<Home> {
                         child: Container(
                           decoration: BoxDecoration(
                              color: Color(0xff5317bd),
-                              shape: BoxShape.circle,
+                             shape: BoxShape.circle,
+                            // borderRadius: BorderRadius.circular(40),
                           ),
                           child: Icon(CommunityMaterialIcons.video_outline,
                             size: 50,
@@ -109,8 +109,8 @@ class _HomeState extends State<Home> {
                               color: Color(0xff5317BD),
                               shape: BoxShape.circle,
                             ),
-                            child: Icon(Icons.add_location,
-                              size: 50,
+                            child: Icon(Dashboard.final_icon,
+                              size: 70,
                               color: Colors.white,
                             ),
                           ),

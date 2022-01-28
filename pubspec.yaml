@@ -36,9 +36,9 @@ flutter:
     - family: Constantia
       fonts:
         - asset: assets/fonts/Constantia.ttf
-    - family: CameraIcon
+    - family: Dashboard
       fonts:
-        - asset: assets/fonts/CameraIcon.ttf
+        - asset: assets/fonts/Dashboard.ttf
 
   uses-material-design: true
 
