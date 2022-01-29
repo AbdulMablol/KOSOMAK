@@ -7,7 +7,8 @@
         {
             "name": "raspberry_pi_stream_camera_to_flutter_live_example",
             "request": "launch",
-            "type": "dart"
+            "type": "dart",
+            "program": "lib/WelcomePage.dart"
         },
         {
             "name": "raspberry_pi_stream_camera_to_flutter_live_example (profile mode)",

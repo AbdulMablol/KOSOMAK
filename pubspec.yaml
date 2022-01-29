@@ -18,6 +18,7 @@ dependencies:
   syncfusion_flutter_gauges: ^19.4.42
   flutter_local_notifications: ^9.2.0
   animated_text_kit: ^4.2.1
+  cloud_firestore: ^3.1.7
 
 
   
@@ -39,6 +40,9 @@ flutter:
     - family: Dashboard
       fonts:
         - asset: assets/fonts/Dashboard.ttf
+    - family: Laser
+      fonts:
+        - asset: assets/fonts/Laser.ttf
 
   uses-material-design: true
 

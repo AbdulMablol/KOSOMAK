@@ -11,7 +11,7 @@
 ///      fonts:
 ///       - asset: fonts/Dashboard.ttf
 ///
-/// 
+///
 ///
 import 'package:flutter/widgets.dart';
 
@@ -21,5 +21,18 @@ class Dashboard {
   static const _kFontFam = 'Dashboard';
   static const _kFontPkg = null;
 
-  static const IconData final_icon = IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData final_icon =
+      IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData target_laser =
+      IconData(0xeac4, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+}
+
+class Laser {
+  Laser._();
+
+  static const _kFontFam = 'Laser';
+  static const _kFontPkg = null;
+
+  static const IconData target_laser =
+      IconData(0xeac4, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

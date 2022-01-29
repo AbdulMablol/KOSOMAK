@@ -1,7 +1,9 @@
+import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_vlc_player/vlc_player.dart';
 import 'package:flutter_vlc_player/vlc_player_controller.dart';
-//import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'dashboard_icons.dart';
 // import 'package:raspberry_pi_stream_camera_to_flutter_live_example/Homepage.dart';
 // import 'Homepage.dart';
 
@@ -51,7 +53,8 @@ class _MyHomePageState extends State<MyHomePage> {
         automaticallyImplyLeading: false,
         backgroundColor: Color(0xff5317BD),
         centerTitle: false,
-        title: const Text('Livestream',
+        title: const Text(
+          'Livestream',
           style: TextStyle(
             fontSize: 25,
           ),
@@ -64,16 +67,23 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             _streamUrl == null
                 ? Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Color(0xff5317bd),
+                        width: 5,
+                      ),
+                    ),
                     child: Center(
                       child: RichText(
                         text: TextSpan(children: [
                           TextSpan(
                             text: 'Stream Closed',
                             style: TextStyle(
-                                fontSize: 17,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
-                                background: Paint()..color = Color(0xff5317BD)),
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                              // background: Paint()..color = Color(0xff5317BD)
+                            ),
                           )
                         ]),
                       ),
@@ -86,6 +96,50 @@ class _MyHomePageState extends State<MyHomePage> {
                     controller: _vlcViewController,
                     placeholder: Container(),
                   ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                ElevatedButton.icon(
+                  icon: Icon(
+                    Laser.target_laser,
+                    size: 40,
+                  ),
+                  style: ElevatedButton.styleFrom(
+                      primary: Color(0xff5317bd),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50))),
+                  onPressed: () {},
+                  label: Text(
+                    'ON',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                ),
+                SizedBox(
+                  width: 150,
+                ),
+                Container(
+                  width: 100,
+                  height: 45,
+                  decoration: ShapeDecoration(
+                      color: Color(0xff5317BD),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50))),
+                  // margin: EdgeInsets.fromLTRB(60, 50, 60, 10),
+                  // padding: EdgeInsets.all(10),
+                  child: Center(
+                    child: Text(
+                      '37.5',
+                      style: TextStyle(
+                          fontSize: 20,
+                          decoration: TextDecoration.none,
+                          color: Colors.white,
+                          fontFamily: 'Consolas'),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       ),
