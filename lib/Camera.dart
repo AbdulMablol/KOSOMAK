@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_vlc_player/vlc_player.dart';
 import 'package:flutter_vlc_player/vlc_player_controller.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'dashboard_icons.dart';
 // import 'package:raspberry_pi_stream_camera_to_flutter_live_example/Homepage.dart';
 // import 'Homepage.dart';
@@ -128,7 +129,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   // padding: EdgeInsets.all(10),
                   child: Center(
                     child: Text(
-                      '37.5',
+                      '37.5°C',
                       style: TextStyle(
                           fontSize: 20,
                           decoration: TextDecoration.none,

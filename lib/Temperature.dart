@@ -1,9 +1,7 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-
 import 'package:raspberry_pi_stream_camera_to_flutter_live_example/widgets/CircleProgress.dart';
 // import 'Homepage.dart';
-
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 class Temp extends StatefulWidget {
@@ -286,8 +284,11 @@ class _DashboardState extends State<Temp> with SingleTickerProviderStateMixin {
                   ),
                 ],
               )
-            : CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation(Color(0xff5317BD)),
+            : Transform.scale(
+                scale: 1.5,
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation(Color(0xff5317BD)),
+                ),
               ),
       ),
       // floatingActionButton: FloatingActionButton(
