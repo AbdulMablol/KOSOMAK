@@ -1,7 +1,7 @@
 import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_vlc_player/vlc_player.dart';
-import 'package:flutter_vlc_player/vlc_player_controller.dart';
+import 'package:flutter_vlc_player/flutter_vlc_player.dart';
+// import 'package:flutter_vlc_player/vlc_player_controller.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'dashboard_icons.dart';
@@ -30,22 +30,32 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String _streamUrl;
+  // String _streamUrl;
   VlcPlayerController _vlcViewController;
+  Future<void> intializePlayer() async {}
   @override
   void initState() {
     // ignore: todo
     // TODO: implement initState
     super.initState();
-    _vlcViewController = new VlcPlayerController();
+    _vlcViewController = VlcPlayerController.network(
+      'https://streamable.com/l/dymet3/mp4.mp4',
+      hwAcc: HwAcc.FULL,
+      options: VlcPlayerOptions(),
+    );
   }
 
-  // ignore: unused_element
-  void _incrementCounter() {
-    setState(() {
-      _streamUrl = 'http://192.168.1.5:8081';
-    });
+  void dispose() async {
+    super.dispose();
+    await _vlcViewController.stopRendererScanning();
+    await _vlcViewController.dispose();
   }
+
+  // void _incrementCounter() {
+  //   setState(() {
+  //     _streamUrl = 'https://media.w3.org/2010/05/sintel/trailer.mp4';
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            _streamUrl == null
+            _vlcViewController == null
                 ? Container(
                     decoration: BoxDecoration(
                       border: Border.all(
@@ -91,9 +101,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   )
                 : new VlcPlayer(
-                    defaultHeight: 580,
-                    defaultWidth: 750,
-                    url: _streamUrl,
+                    // defaultHeight: 480,
+                    // defaultWidth: 640,
+                    // url: _streamUrl,
+                    aspectRatio: 16 / 9,
                     controller: _vlcViewController,
                     placeholder: Container(),
                   ),
@@ -154,6 +165,12 @@ class _MyHomePageState extends State<MyHomePage> {
       //   child: const Icon(Icons.arrow_back),
       //   backgroundColor: Colors.black,
       // ), // This trailing comma makes auto-formatting nicer for build methods.
+
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: _incrementCounter,
+      //   tooltip: 'Increment',
+      //   child: Icon(Icons.play_arrow),
+      // ),
     );
   }
 }
