@@ -1,10 +1,10 @@
 # Infant Visualization System (Project 2)             
 ![Github Logo](https://user-images.githubusercontent.com/97244341/152191359-bd151629-a659-4187-93a2-dd86540e5af8.png)
 
-
 A Raspberry pi-based smart baby crib.
-![Bed](https://user-images.githubusercontent.com/97244341/152197005-32be1048-149a-4f01-9e44-e1e386bdb508.jpeg)   
-![Bed2](https://user-images.githubusercontent.com/97244341/152197184-2a2974ae-9b05-4fe6-9416-a52544178855.jpeg)
+
+&nbsp; ![Bed](https://user-images.githubusercontent.com/97244341/152197005-32be1048-149a-4f01-9e44-e1e386bdb508.jpeg)  ![Bed2](https://user-images.githubusercontent.com/97244341/152197184-2a2974ae-9b05-4fe6-9416-a52544178855.jpeg) 
+
 
 
 
