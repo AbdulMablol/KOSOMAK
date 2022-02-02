@@ -1,6 +1,6 @@
-# raspberry_pi_stream_camera_to_flutter_live_example
+# Infant Visualization System (Project 2)
 
-A new Flutter project.
+A Raspberry pi-based smart baby crib.
 
 ## Getting Started
 
