@@ -4,7 +4,7 @@ A Raspberry pi-based smart baby crib.
 
 ## Getting Started
 
-![Welcome Screenshot](https://user-images.githubusercontent.com/97244341/152190167-36db4498-d9c5-4da6-92ff-1a616b661a5d.jpg)        ![Homepage Screenshot](https://user-images.githubusercontent.com/97244341/152190454-5a76f8e8-d624-4392-ad26-76a6a9ccbf73.jpg)
+![Welcome Screenshot](https://user-images.githubusercontent.com/97244341/152190167-36db4498-d9c5-4da6-92ff-1a616b661a5d.jpg)                                ![Homepage Screenshot](https://user-images.githubusercontent.com/97244341/152190454-5a76f8e8-d624-4392-ad26-76a6a9ccbf73.jpg)
 ![Dashboard Screenshot](https://user-images.githubusercontent.com/97244341/152190503-55ac6e03-f942-45be-8c87-eda962c4ccd2.jpg)
 
 
