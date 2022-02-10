@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:raspberry_pi_stream_camera_to_flutter_live_example/dashboard_icons.dart';
 import 'package:raspberry_pi_stream_camera_to_flutter_live_example/model/slide.dart';
 import 'package:raspberry_pi_stream_camera_to_flutter_live_example/widgets/slide_dots.dart';
 import 'package:raspberry_pi_stream_camera_to_flutter_live_example/widgets/slide_item.dart';
 import 'Homepage.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() =>
-    runApp(MaterialApp(debugShowCheckedModeBanner: false, home: Welcome()));
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: Welcome()));
+}
 
 class Welcome extends StatefulWidget {
   const Welcome({key}) : super(key: key);

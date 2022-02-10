@@ -1,10 +1,11 @@
-import 'package:community_material_icon/community_material_icon.dart';
+// import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_vlc_player/flutter_vlc_player.dart';
 // import 'package:flutter_vlc_player/vlc_player_controller.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'dashboard_icons.dart';
+import 'package:firebase_database/firebase_database.dart';
 // import 'package:raspberry_pi_stream_camera_to_flutter_live_example/Homepage.dart';
 // import 'Homepage.dart';
 
@@ -29,21 +30,43 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  // String _streamUrl;
-  VlcPlayerController _vlcViewController;
-  Future<void> intializePlayer() async {}
+class _MyHomePageState extends State<MyHomePage>
+    with SingleTickerProviderStateMixin {
+  bool isLoading = false;
+
+  final databaseReference = FirebaseDatabase.instance.reference();
+  AnimationController progressController;
+  Animation<double> mlxAnimation;
   @override
   void initState() {
-    // ignore: todo
-    // TODO: implement initState
     super.initState();
+    databaseReference.child('DHT22').once().then((DataSnapshot snapshot) {
+      double mlx = snapshot.value['1-set']['object'];
+      isLoading = true;
+      _dashboardInit(mlx);
+    });
     _vlcViewController = VlcPlayerController.network(
-      'https://streamable.com/l/dymet3/mp4.mp4',
+      'https://streamable.com/l/f24hng/mp4-mobile.mp4',
       hwAcc: HwAcc.FULL,
       options: VlcPlayerOptions(),
     );
   }
+
+  _dashboardInit(double mlx) {
+    progressController = AnimationController(
+        vsync: this, duration: Duration(milliseconds: 1000)); //1s
+
+    mlxAnimation = Tween<double>(begin: 0, end: mlx).animate(progressController)
+      ..addListener(() {
+        setState(() {});
+      });
+
+    progressController.forward();
+  }
+
+  bool switchLaser = true;
+  VlcPlayerController _vlcViewController;
+  Future<void> intializePlayer() async {}
 
   void dispose() async {
     super.dispose();
@@ -108,50 +131,74 @@ class _MyHomePageState extends State<MyHomePage> {
                     controller: _vlcViewController,
                     placeholder: Container(),
                   ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                ElevatedButton.icon(
-                  icon: Icon(
-                    Laser.target_laser,
-                    size: 40,
-                  ),
-                  style: ElevatedButton.styleFrom(
-                      primary: Color(0xff5317bd),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50))),
-                  onPressed: () {},
-                  label: Text(
-                    'ON',
-                    style: TextStyle(fontSize: 20),
-                  ),
-                ),
-                SizedBox(
+            Column(children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(left: 307),
+                child: SizedBox(
                   width: 150,
+                  height: 70,
+                  child: Text(
+                    "Baby's temp",
+                    style: TextStyle(color: Colors.white, fontSize: 25),
+                  ),
                 ),
-                Container(
-                  width: 100,
-                  height: 45,
-                  decoration: ShapeDecoration(
-                      color: Color(0xff5317BD),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50))),
-                  // margin: EdgeInsets.fromLTRB(60, 50, 60, 10),
-                  // padding: EdgeInsets.all(10),
-                  child: Center(
-                    child: Text(
-                      '37.5°C',
-                      style: TextStyle(
-                          fontSize: 20,
-                          decoration: TextDecoration.none,
-                          color: Colors.white,
-                          fontFamily: 'Consolas'),
-                      textAlign: TextAlign.center,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  ElevatedButton.icon(
+                    icon: Icon(
+                      Laser.target_laser,
+                      size: 40,
+                    ),
+                    style: ElevatedButton.styleFrom(
+                        primary: switchLaser ? Color(0xff5317bd) : Colors.red,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50))),
+                    onPressed: () {
+                      setState(() {
+                        switchLaser = !switchLaser;
+                      });
+                      FirebaseFirestore firestore = FirebaseFirestore.instance;
+                      CollectionReference output1 =
+                          firestore.collection('output1');
+                      output1.doc('Laser').set({'status': switchLaser});
+                    },
+                    label: Text(
+                      switchLaser ? 'ON' : 'OFF',
+                      style: TextStyle(fontSize: 20),
                     ),
                   ),
-                ),
-              ],
-            ),
+                  SizedBox(
+                    width: 150,
+                  ),
+                  Container(
+                    width: 100,
+                    height: 45,
+                    decoration: ShapeDecoration(
+                        color: Color(0xff5317BD),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50))),
+                    // margin: EdgeInsets.fromLTRB(60, 50, 60, 10),
+                    // padding: EdgeInsets.all(10),
+                    child: Center(
+                        child: !switchLaser
+                            ? Text(
+                                mlxAnimation != null
+                                    ? '${mlxAnimation.value.toInt()}°C'
+                                    : '',
+                                style: TextStyle(
+                                    fontSize: 25,
+                                    decoration: TextDecoration.none,
+                                    color: Colors.white,
+                                    fontFamily: 'Consolas'),
+                                textAlign: TextAlign.center,
+                              )
+                            : Text('')),
+                  ),
+                ],
+              ),
+            ]),
           ],
         ),
       ),

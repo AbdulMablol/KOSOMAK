@@ -19,6 +19,7 @@ class _DashboardState extends State<Temp> with SingleTickerProviderStateMixin {
   Animation<double> humidityAnimation;
   Animation<double> weightAnimation;
   Animation<double> cryAnimation;
+  Animation<double> mlxAnimation;
   @override
   void initState() {
     super.initState();
@@ -27,12 +28,14 @@ class _DashboardState extends State<Temp> with SingleTickerProviderStateMixin {
       double humidity = snapshot.value['1-set']['Humidity'];
       double weight = snapshot.value['1-set']['Weight'];
       double cry = snapshot.value['1-set']['Cry'];
+      double mlx = snapshot.value['1-set']['ambient'];
       isLoading = true;
-      _dashboardInit(temp, humidity, weight, cry);
+      _dashboardInit(temp, humidity, weight, cry, mlx);
     });
   }
 
-  _dashboardInit(double temp, double humid, double weight, double cry) {
+  _dashboardInit(
+      double temp, double humid, double weight, double cry, double mlx) {
     progressController = AnimationController(
         vsync: this, duration: Duration(milliseconds: 1000)); //1s
 
@@ -55,6 +58,11 @@ class _DashboardState extends State<Temp> with SingleTickerProviderStateMixin {
           });
 
     cryAnimation = Tween<double>(begin: 0, end: cry).animate(progressController)
+      ..addListener(() {
+        setState(() {});
+      });
+
+    mlxAnimation = Tween<double>(begin: 0, end: mlx).animate(progressController)
       ..addListener(() {
         setState(() {});
       });
@@ -170,7 +178,7 @@ class _DashboardState extends State<Temp> with SingleTickerProviderStateMixin {
                           SizedBox(
                             height: 40,
                             child: Text(
-                              'Weight: ${weightAnimation.value.toInt()}',
+                              'Weight: ${weightAnimation.value.toInt()} grams',
                               style: TextStyle(
                                 color: Color(0xFFB2BCCC),
                                 fontSize: 25,
@@ -214,7 +222,7 @@ class _DashboardState extends State<Temp> with SingleTickerProviderStateMixin {
                           SizedBox(
                             height: 40,
                             child: Text(
-                              'Crying: ${cryAnimation.value.toInt()}',
+                              'Crying: ${cryAnimation.value.toInt()} dB',
                               style: TextStyle(
                                 color: Color(0xFFB2BCCC),
                                 fontSize: 25,
